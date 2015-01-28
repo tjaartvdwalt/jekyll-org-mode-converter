@@ -78,11 +78,11 @@ bundle exec jekyll serve
 
 ** Deploying to Github
 One of the cool features of Jekyll is that you can deploy Jekyll websites to Github by simply pushing the Jekyll code
-to your GitHub remote. Unfortunately for us Github does not allow you to run custom plugins for [[http://jekyllrb.com/docs/plugins/][security reasons]].
+to your GitHub remote. Unfortunately for us, Github does not allow you to run custom plugins for [[http://jekyllrb.com/docs/plugins/][security reasons]].
 This implies that to use [[https://help.github.com/articles/using-jekyll-with-pages/][Jekyll with GitHub Pages]] you ideally need to write posts in Markdown. But I love Org mode and I don't want to learn yet another markup language. 
 
-Luckily all is not lost, but you will need to build your site locally and push your static pages to GitHub.
-To keep everything tidy I organize my git repository in the following way
+Luckily all is not lost, but one will need to build your site locally and push your static pages to GitHub.
+To keep everything tidy I organize my git repository in the following way:
 
 #+begin_src
 .
@@ -91,14 +91,23 @@ To keep everything tidy I organize my git repository in the following way
 |
 |-- www          (resulting site goes here)
 |
-|-- index.html   (redirects to www/index.html)
+|-- .nojekyll    (prevents GitHub from processing our jekyll code)
+|
+|-- index.html   (redirects users to www/index.html)
 #+end_src
 
 
-You will need to configure the custom destination directory by adding the following line in your ~_config.yml~
+You will need to configure the destination directory by adding the following line in your ~_config.yml~
 #+begin_src ruby
 destination: ../www
 #+end_src
+
+For relative links to work properly you will also need to set the ~baseurl~ property in your ~_config.yml~
+#+begin_src ruby
+baseurl: /www
+#+end_src
+
+Also, you will need to create a file called ~.nojekyll~ to prevent GitHub from trying to serve the Jekyll pages in the src directory.
 
 Create ~index.html~ with the following content
 #+begin_src html
@@ -112,7 +121,7 @@ Run ~jekyll build~ on the ~src~ directory and push the results to GitHub.
 
 
 ** Example
-I run my personal website on Github using the technique described above. You can look at the code [[http://tjaartvdwalt.github.io/][here]].
+To see an example of the Github deployment method in action, have a look at [[http://tjaartvdwalt.github.io][my personal website]]. You can see the source code [[http://tjaartvdwalt.github.io/][here]].
 
 ** Contributing to jekyll-org-mode-converter
  
