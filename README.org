@@ -1,34 +1,35 @@
+#+OPTIONS: toc:t
 * jekyll-org-mode-converter
 ** Motivation
-I love org-mode. I try to write all my documents in org-mode and export them everywhere. Unfortunately org-mode's default html output is rather bland.
-Enter *[[http://jekyllrb.com/][Jekyll]]*. Jekyll makes deploying static websites fun.
+I love Emacs [[http://orgmode.org/][Org mode]]. I try to write all my documents in Org mode and export them everywhere. Unfortunately Org mode's default html output is rather plain.
+Enter *[[http://jekyllrb.com/][Jekyll]]*. Jekyll makes deploying static websites fun and pretty.
 
 ** Other solutions
 I searched for a solution to merge these two technologies and found [[https://github.com/eggcaker/jekyll-org][jekyll-org]]
 While this seems like a great project, it has some problems:
-- It is not compatible with recent versions of org-mode
+- It is not compatible with recent versions of Org mode
 - The workflow seems pretty complex.
 
 To convert your documents you need to run a separate make file that invokes some elisp, to convert your org files to html, it then invokes jekyll in a sub directory on the converted html to build your jekyll site. 
 
-While I understand that hacking Elisp will seem like the appropriate course of action in any scenario for the experienced Emacs user, 
+While I understand that hacking Elisp seems like the appropriate course of action for the experienced Emacs user in any scenario, 
 I don't believe *every problem* is best solved by hacking Elisp.
 
 ** Our approach
-I decided to approach the problem from a Jekyll point of view. I wanted to use the standard Jekyll workflow, only with org-mode files instead of markdown.  
+I decided to approach the problem from a Jekyll point of view. I wanted to use the standard Jekyll workflow, only with Org mode files instead of markdown.  
 
 Luckily jekyll makes it easy to write a [[http://jekyllrb.com/docs/plugins/#converters][converter]] for a new markup language. To make the job even easier there already exists a ruby based
-org-to-html converter [[https://github.com/bdewey/org-ruby][org-ruby]]. Org-ruby is what Github uses to render org-mode files, like this README to html. 
+org-to-html converter [[https://github.com/bdewey/org-ruby][org-ruby]]. Org-ruby is what Github uses to render Org mode files, like this README to html. 
 
 
 ** How to use the converter
 *** Short version
 For experienced Jekyll users, you need to do 2 things to get ~jekyll-org-mode-converter~ to work
-- Install the gem file
-- Include the gem file in your ~_config.yml~
+- Install the gem
+- Include the gem in your ~_config.yml~
 
 *** Long version
-To  use ~jekyll-org-mode-converter~ with Jekyll, you need to have Ruby RubyGems and Jekyll installed. See  howto do that [[http://jekyllrb.com/docs/installation/][here]].
+To  use ~jekyll-org-mode-converter~ with Jekyll, you need to have Ruby RubyGems and Jekyll installed. See  how to do that [[http://jekyllrb.com/docs/installation/][here]].
 
 Create a new Jekyll project ~my-site~ run
 #+begin_src bash
@@ -54,7 +55,7 @@ To use the new converter add the following line to your ~_config.yml~
 gems: [jekyll-org-mode-converter]
 #+end_src
 
-Now write your jekyll posts/pages in org-mode!
+Now write your jekyll posts in Org mode!
 
 To build your site run
 #+begin_src bash
