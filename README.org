@@ -1,7 +1,15 @@
-#+OPTIONS: toc:t
-* jekyll-org-mode-converter
+* jekyll-org-mode-converter                                             :TOC:
+     - [[#motivation][Motivation]]
+     - [[#other-solutions][Other solutions]]
+     - [[#our-approach][Our approach]]
+     - [[#how-to-use-the-converter][How to use the converter]]
+     - [[#deploying-to-github][Deploying to Github]]
+     - [[#example][Example]]
+     - [[#contributing-to-jekyll-org-mode-converter][Contributing to jekyll-org-mode-converter]]
+     - [[#copyright][Copyright]]
+
 ** Motivation
-I love Emacs [[http://orgmode.org/][Org mode]]. I try to write all my documents in Org mode and export them everywhere. Unfortunately Org mode's default html output is rather plain.
+I love Emacs *[[http://orgmode.org/][Org mode]]* I try to write all my documents in Org mode and export them everywhere. Unfortunately Org mode's default html output is rather plain.
 Enter *[[http://jekyllrb.com/][Jekyll]]*. Jekyll makes deploying static websites fun and pretty.
 
 ** Other solutions
@@ -18,7 +26,7 @@ I don't believe *every problem* is best solved by hacking Elisp.
 ** Our approach
 I decided to approach the problem from a Jekyll point of view. I wanted to use the standard Jekyll workflow, only with Org mode files instead of markdown.  
 
-Luckily jekyll makes it easy to write a [[http://jekyllrb.com/docs/plugins/#converters][converter]] for a new markup language. To make the job even easier there already exists a ruby based
+Luckily Jekyll makes it easy to write a [[http://jekyllrb.com/docs/plugins/#converters][converter]] for a new markup language. To make the job even easier there already exists a ruby based
 org-to-html converter [[https://github.com/bdewey/org-ruby][org-ruby]]. Org-ruby is what Github uses to render Org mode files, like this README to html. 
 
 
@@ -31,12 +39,12 @@ For experienced Jekyll users, you need to do 2 things to get ~jekyll-org-mode-co
 *** Long version
 To  use ~jekyll-org-mode-converter~ with Jekyll, you need to have Ruby RubyGems and Jekyll installed. See  how to do that [[http://jekyllrb.com/docs/installation/][here]].
 
-Create a new Jekyll project ~my-site~ run
-#+begin_src bash
+Create a new Jekyll project ~my-site~ run:
+#+begin_src sh
 jekyll new my-site
 #+end_src
 
-Create a Gemfile in the root of the project, and add at least the following line
+Create a Gemfile in the root of the project, and add at least the following lines:
 #+begin_src ruby
 source 'https://rubygems.org'
 
@@ -44,26 +52,26 @@ gem 'jekyll' , '>= 2.5.3'
 gem 'jekyll-org-mode-converter' , '>= 0.1.1'
 #+end_src
 
-Install the gems with bundler
-#+begin_src bash
+Install the gems with bundler:
+#+begin_src sh
 bundle install
 #+end_src
 
 
-To use the new converter add the following line to your ~_config.yml~
+To use the new converter add the following line to your ~_config.yml~:
 #+begin_src ruby
 gems: [jekyll-org-mode-converter]
 #+end_src
 
 Now write your jekyll posts in Org mode!
 
-To build your site run
-#+begin_src bash
+To build your site run:
+#+begin_src sh
 bundle exec jekyll build
 #+end_src
 
-and to serve your site run
-#+begin_src ruby
+and to serve your site run:
+#+begin_src sh
 bundle exec jekyll serve
 #+end_src
 
