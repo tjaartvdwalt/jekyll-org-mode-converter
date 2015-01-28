@@ -1,0 +1,38 @@
+* jekyll-org-mode-converter
+I love org-mode. I want to write all my documents in org-mode and export them everywhere. Unfortunately org-mode's default html output is rather bland.
+
+Enter Jekyll. Jekyll makes deploying websites fun.
+
+I searched for a solution to merge these two great technologies and found a [[https://github.com/eggcaker/jekyll-org][jekyll-org]]
+This package is not compatible with recent versions of org-mode, and the workflow is pretty convoluted.
+I did not want a solution where I have to run a wrapping make file that runs some elisp, to convert my org files to html, then massage the html a little bit, and then run jekyll in some sub directory on my converted html. 
+I wanted a solution where I could use the standard jekyll workflow, only with org-mode files instead of markdown.  
+I believe jekyll-org, and some other solutions I came across is approaching the problem from the wrong side.
+Not *every problem* is best solved by hacking Elisp.
+
+Jekyll makes it easy to write a [[http://jekyllrb.com/docs/plugins/#converters][converter]] for a new markup language. To make the job even easier there already exists a ruby based
+org-to-html converter called [[https://github.com/bdewey/org-ruby][org-ruby]]. Org-ruby is what Github uses to render this org-mode README file to html. 
+
+To use org-mode in your jekyll project simply add the following line to your ~_config.yml~
+
+#+begin_src ruby
+gems: [jekyll-org-mode-converter]
+#+end_src
+
+Now you can write jekyll posts in org mode!
+
+** Contributing to jekyll-org-mode-converter
+ 
+- Check out the latest master to make sure the feature hasn't been implemented or the bug hasn't been fixed yet.
+- Check out the issue tracker to make sure someone already hasn't requested it and/or contributed it.
+- Fork the project.
+- Start a feature/bugfix branch.
+- Commit and push until you are happy with your contribution.
+- Make sure to add tests for it. This is important so I don't break it in a future version unintentionally.
+- Please try not to mess with the Rakefile, version, or history. If you want to have your own version, or is otherwise necessary, that is fine, but please isolate to its own commit so I can cherry-pick around it.
+
+** Copyright
+
+Copyright (c) 2015 Tjaart van der Walt. See LICENSE.txt for
+further details.
+

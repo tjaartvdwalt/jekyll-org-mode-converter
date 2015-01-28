@@ -2,6 +2,8 @@
 
 require 'rubygems'
 require 'bundler'
+require 'org-ruby'
+
 begin
   Bundler.setup(:default, :development)
 rescue Bundler::BundlerError => e
@@ -17,8 +19,8 @@ Jeweler::Tasks.new do |gem|
   gem.name = "jekyll-org-mode-converter"
   gem.homepage = "http://github.com/tjaartvdwalt/jekyll-org-mode-converter"
   gem.license = "MIT"
-  gem.summary = %Q{TODO: one-line summary of your gem}
-  gem.description = %Q{TODO: longer description of your gem}
+  gem.summary = %Q{Jekyll converter for org-mode files}
+  gem.description = %Q{So you want org-mode support for Jekyll. Write your _posts in org-mode, then add 'gems: [jekyll-org-mode-converter]' to your _config.yml. Thats it!}
   gem.email = "github@tjaart.co.za"
   gem.authors = ["Tjaart van der Walt"]
   # dependencies defined in Gemfile
