@@ -13,7 +13,8 @@ I love Emacs *[[http://orgmode.org/][Org mode]]* and I try to write all my docum
 Enter *[[http://jekyllrb.com/][Jekyll]]*. Jekyll makes deploying static websites fun and pretty.
 
 ** Other solutions
-I searched for a solution to merge these two technologies and found [[https://github.com/eggcaker/jekyll-org][jekyll-org]]
+*** cinsk/jekyll-org
+I searched for a solution to use these two technologies together and found [[https://github.com/cinsk/jekyll-org/][cinsk/jekyll-org]].
 While this seems like a great project, it has some problems:
 - It is not compatible with recent versions of Org mode
 - The workflow seems pretty complex.
@@ -22,6 +23,13 @@ To convert your documents you need to run a separate make file that runs some el
 
 While I understand that hacking Elisp always seems like the appropriate course of action for many experienced Emacs users, 
 I don't believe *every problem* is best solved inside Emacs.
+
+*** eggcaker/jekyll-org
+Only after completing this project did I discover the project which would have been perfect for my purposes: [[https://github.com/eggcaker/jekyll-org][eggcaker/jekyll-org]]
+This project is very similar to mine, and (at the moment) is more mature. For example I have not thought about how to handle Liquid code in my HTML yet.
+I thought about abandoning the project, but I see 2 differences that keeps it worth saving in my view:
+- eggcaker/jekkyll-org runs as a plugin, my project gets installed as a Gem.
+- My project has better documentation. I think the section on how to deploy to GitHub is especially useful.
 
 ** My approach
 I decided to approach the problem from a Jekyll point of view. I wanted to use the standard Jekyll workflow, only with Org mode files instead of Markdown files.  
