@@ -1,25 +1,100 @@
 * jekyll-org-mode-converter
-I love org-mode. I want to write all my documents in org-mode and export them everywhere. Unfortunately org-mode's default html output is rather bland.
+** Motivation
+I love org-mode. I try to write all my documents in org-mode and export them everywhere. Unfortunately org-mode's default html output is rather bland.
+Enter [[http://jekyllrb.com/][jekyll]]. Jekyll makes deploying websites or blog fun.
 
-Enter Jekyll. Jekyll makes deploying websites fun.
+** Other solutions
+I searched for a solution to merge these two technologies and found [[https://github.com/eggcaker/jekyll-org][jekyll-org]]
+While this seems like a great project, it has some problems.
+Firstly it is not compatible with recent versions of org-mode, and secondly the workflow seemed pretty complex.
+To convert your documents you need to run a separate make file that invokes some elisp, to convert your org files to html, it then invokes jekyll in a sub directory on the converted html to build your jekyll site. 
 
-I searched for a solution to merge these two great technologies and found a [[https://github.com/eggcaker/jekyll-org][jekyll-org]]
-This package is not compatible with recent versions of org-mode, and the workflow is pretty convoluted.
-I did not want a solution where I have to run a wrapping make file that runs some elisp, to convert my org files to html, then massage the html a little bit, and then run jekyll in some sub directory on my converted html. 
-I wanted a solution where I could use the standard jekyll workflow, only with org-mode files instead of markdown.  
-I believe jekyll-org, and some other solutions I came across is approaching the problem from the wrong side.
-Not *every problem* is best solved by hacking Elisp.
+While I understand that hacking elisp will seem like the appropriate course of action in any scenario for the experienced Emacs user, 
+I don't believe *every problem* is best solved by hacking Elisp.
 
-Jekyll makes it easy to write a [[http://jekyllrb.com/docs/plugins/#converters][converter]] for a new markup language. To make the job even easier there already exists a ruby based
-org-to-html converter called [[https://github.com/bdewey/org-ruby][org-ruby]]. Org-ruby is what Github uses to render this org-mode README file to html. 
+** Our approach
+I decided to approach the problem from a jekyll point of view. I wanted to use the standard jekyll workflow, only with org-mode files instead of markdown.  
 
-To use org-mode in your jekyll project simply add the following line to your ~_config.yml~
+Luckily jekyll makes it easy to write a [[http://jekyllrb.com/docs/plugins/#converters][converter]] for a new markup language. To make the job even easier there already exists a ruby based
+org-to-html converter [[https://github.com/bdewey/org-ruby][org-ruby]]. Org-ruby is what Github uses to render this org-mode README file to html. 
 
+** Usage
+To  use jekyll-org-mode-converter with jekyll, you need to have Ruby RubyGems and jekyll installed. See  howto do that [[http://jekyllrb.com/docs/installation/][here]].
+
+Create a new jekyll project ~my-site~ run
+#+begin_src ruby
+jekyll new my-site
+#+end_src
+
+Create a Gemfile in the root of the project, and add at least the following line
+#+begin_src ruby
+source 'https://rubygems.org'
+
+gem 'jekyll' , '>= 2.5.3'
+gem 'jekyll-org-mode-converter' , '>= 0.1.1'
+#+end_src
+
+Install the gems with bundler
+#+begin_src ruby
+bundle install
+#+end_src
+
+
+To use the new converter add the following line to your ~_config.yml~
 #+begin_src ruby
 gems: [jekyll-org-mode-converter]
 #+end_src
 
-Now you can write jekyll posts in org mode!
+Now write your jekyll posts/pages in org-mode!
+
+To build your site run
+#+begin_src ruby
+bundle exec jekyll build
+#+end_src
+
+and to serve your site run
+#+begin_src ruby
+bundle exec jekyll serve
+#+end_src
+
+
+** Deploying to Github
+One of the cool features of jekyll is that you can deploy Jekyll websites to Github by simply committing the Jekyll code
+to your git repository. Unfortunately Github does not allow you to run custom plugins for [[http://jekyllrb.com/docs/plugins/][security reasons]].
+This implies that to use [[https://help.github.com/articles/using-jekyll-with-pages/][Jekyll with GitHub Pages]] you ideally need to write posts in Markdown. But you love org-mode and you don't want to learn yet another markup language. 
+
+Luckily all is not lost, but you will need to build your site locally and push your static pages to GitHub.
+To keep everything tidy I organize my git repository in the following way
+
+#+begin_src bash
+.
+|
+|-- src          (the root of my jekyll project)
+|
+|-- www          (resulting site goes here)
+|
+|-- index.html   (redirects to www/index.html)
+#+end_src
+
+
+You will need to configure the custom destination directory by adding the following line in your ~_config.yml~
+#+begin_src bash
+destination: ../www
+#+end_src
+
+Create ~index.html~ with the following content
+#+begin_src html
+<html>
+<meta http-equiv="refresh" content="0; url=www" />
+</html>
+#+end_src
+
+Run ~jekyll build~ on the ~src~ directory and push the results to GitHub.
+
+
+
+** Example
+I run my personal website on Github using the technique described above. You can look at the code [[http://tjaartvdwalt.github.io/][here]].
 
 ** Contributing to jekyll-org-mode-converter
  
