@@ -12,7 +12,7 @@ Gem::Specification.new do |s|
   s.require_paths = ["lib"]
   s.authors = ["Tjaart van der Walt"]
   s.date = "2015-01-28"
-  s.description = "So you want org-mode support for Jekyll. Write your _posts in org-mode, then add 'gems: [jekyll-org-mode-converter]' to your _config.yml. Thats it!"
+  s.description = "Add this converter to your Jekyll configuration in order to write Jekyll posts with Org mode syntax."
   s.email = "github@tjaart.co.za"
   s.extra_rdoc_files = [
     "LICENSE.txt",
@@ -33,7 +33,7 @@ Gem::Specification.new do |s|
   s.homepage = "http://github.com/tjaartvdwalt/jekyll-org-mode-converter"
   s.licenses = ["MIT"]
   s.rubygems_version = "2.4.5"
-  s.summary = "Jekyll converter for org-mode files"
+  s.summary = "Jekyll converter for Org mode files"
 
   if s.respond_to? :specification_version then
     s.specification_version = 4
