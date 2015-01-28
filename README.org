@@ -87,9 +87,9 @@ My approach is to keep both the Jekyll code and the static HTML in a single repo
 #+begin_src
 .
 |
-|-- src          (the root of my jekyll project)
+|-- src/         (the root of my jekyll project)
 |
-|-- www          (resulting site goes here)
+|-- www/         (resulting site goes here)
 |
 |-- .nojekyll    (prevents GitHub from building our Jekyll code)
 |
