@@ -27,7 +27,8 @@ I don't believe *every problem* is best solved inside Emacs.
 *** eggcaker/jekyll-org
 Only after completing this project did I discover the project which would have been perfect for my purposes: [[https://github.com/eggcaker/jekyll-org][eggcaker/jekyll-org]]
 This project is very similar to mine, and (at the moment) is more mature. For example I have not thought about how to handle Liquid code in my HTML yet.
-I thought about abandoning the project, but I see 2 differences that keeps it worth saving in my view:
+
+I thought about abandoning the project, but I see 2 differences that makes it worth saving in my view:
 - eggcaker/jekkyll-org runs as a plugin, my project gets installed as a Gem.
 - My project has better documentation. I think the section on how to deploy to GitHub is especially useful.
 
