@@ -125,7 +125,7 @@ Create ~index.html~ to redirect to the ~wwww~ directory
 </html>
 #+end_src
 
-Localy you should run ~jekyll build~ on the ~src~ directory and push the results to GitHub.
+Locally you should run ~jekyll build~ on the ~src~ directory and push the results to GitHub.
 
 
 
